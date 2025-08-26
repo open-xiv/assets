@@ -1,0 +1,29 @@
+name: Notify Memo Server
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'duty/**'
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Generate Token
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: 'memo-server'
+
+      - name: Trigger Memo Server Deploy
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          repository: 'open-xiv/memo-server'
+          token: ${{ steps.generate-token.outputs.token }}
+          event-type: assets-data-update
