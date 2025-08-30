@@ -1,0 +1,173 @@
+# -------------------
+# UWU
+# 究极神兵绝境战
+# 阶段划分参考 月见山茶 & 萌神神 & 菜菜的橙子
+# Author: Nag0mi
+# -------------------
+
+zone_id: 777
+name: 究极神兵绝境战
+name_en: The Weapon's Refrain
+code: UWU
+
+# --- Meta ---
+party_size: 8
+level: 70
+logs_encounter:
+  zone: 59
+  encounter: 1074
+
+# --- Variables ---
+variables:
+  - name: 三神次数
+    initial: 0
+
+# --- Mechanics ---
+mechanics:
+  # --- Phase 1 Mechanics ---
+  - name: 螺旋气流
+    name_en: Slipstream
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11091 }
+  - name: 寒风之啸
+    name_en: MistralShriek
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11092 }
+  - name: 大气爆发
+    name_en: AerialBlast
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11093 }
+  - name: 邪轮旋风
+    name_en: WickedWheel
+    trigger: { type: ACTION_EVENT, status: START, status_id: 11086 }
+
+  - name: 风神觉醒 # P1 -> P2
+    name_en: WindSpiritAwakening
+    trigger: { type: STATUS_EVENT, status: APPLIED, action_id: 1529 }
+
+  # --- Phase 2 Mechanics ---
+  - name: 地狱之火炎
+    name_en: Hellfire
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11102 }
+  - name: 灼热咆哮
+    name_en: InfernoHowl
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11099 }
+  - name: 火神觉醒
+    name_en: FireSpiritAwakening
+    trigger: { type: STATUS_EVENT, status: APPLIED, action_id: 1529 }
+
+  - name: 大地粉碎 # P2 -> P3
+    name_en: Geocrush
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11517 }
+
+  # --- Phase 3 Mechanics ---
+  - name: 大怒震
+    name_en: Upheaval
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11111 }
+  - name: 土神觉醒
+    name_en: EarthSpiritAwakening
+    trigger: { type: STATUS_EVENT, status: APPLIED, action_id: 1529 }
+
+  - name: 雾散爆发 # P3 -> P4
+    name_en: Self Detonate
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11122 }
+
+  # --- Phase 4 Mechanics ---
+  - name: 冥暗
+    name_en: Dark
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11124 }
+  - name: 究极
+    name_en: Ultima
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11147 }
+  - name: 追击之究极幻想
+    name_en: UltimatePredation
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11126 }
+  - name: 1.5 运
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11133 }
+  - name: 爆击之究极幻想
+    name_en: UltimateAnnihilation
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11596 }
+  - name: 乱击之究极幻想
+    name_en: UltimateSuppression
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11597 }
+  - name: 以太波动
+    name_en: AetherBoom
+    trigger: { type: ACTION_EVENT, status: START, action_id: 11144 }
+  - name: 家长会
+    trigger:
+      type: LOGICAL_OPERATOR
+      operator: OR
+      conditions:
+        - { type: ACTION_EVENT, status: START, action_id: 11475 } # 风神
+        - { type: ACTION_EVENT, status: START, action_id: 11476 } # 火神
+        - { type: ACTION_EVENT, status: START, action_id: 11477 } # 土神
+    actions:
+      - { type: INCREMENT_VARIABLE, name: 三神次数, value: 1 }
+
+# --- Timeline ---
+timeline:
+  start_phase: P1
+
+  phases:
+    - name: P1
+      target_id: 8722
+      checkpoints:
+        - 螺旋气流
+        - 寒风之啸
+        - 大气爆发
+        - 邪轮旋风
+      transitions:
+        - target_phase: P2
+          conditions:
+            - type: MECHANIC_TRIGGERED
+              mechanic_name: 风神觉醒
+
+    - name: P2
+      target_id: 8730
+      checkpoints:
+        - 地狱之火炎
+        - 灼热咆哮
+        - 火神觉醒
+      transitions:
+        - target_phase: P3
+          conditions:
+            - type: MECHANIC_TRIGGERED
+              mechanic_name: 大地粉碎
+
+    - name: P3
+      target_id: 8727
+      checkpoints:
+        - 大怒震
+        - 土神觉醒
+      transitions:
+        - target_phase: P4
+          conditions:
+            - type: MECHANIC_TRIGGERED
+              mechanic_name: 雾散爆发
+
+    - name: P4
+      target_id: 0
+      checkpoints:
+        - 冥暗
+      transitions:
+        - target_phase: P5
+          conditions:
+            - type: MECHANIC_TRIGGERED
+              mechanic_name: 究极
+
+    - name: P5
+      target_id: 8734
+      checkpoints:
+        - 追击之究极幻想
+        - 1.5 运
+        - 爆击之究极幻想
+        - 乱击之究极幻想
+        - 以太波动
+        - 家长会
+      transitions:
+        - target_phase: 狂暴
+          conditions:
+            - type: EXPRESSION
+              expression: variables.三神次数 >= 3
+
+    - name: 狂暴
+      target_id: 8734
+      checkpoints: [ ]
+      transitions: [ ]
