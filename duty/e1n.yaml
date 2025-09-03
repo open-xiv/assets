@@ -17,67 +17,67 @@ variables: [ ]
 
 # --- Mechanics ---
 mechanics:
-  # --- Phase 1 Mechanics ---
-  - name: 乐园之枪
-    trigger: { type: ACTION_EVENT, status: START, action_id: 15777 }
-  - name: 伊甸重力
-    trigger: { type: ACTION_EVENT, status: START, action_id: 15764 }
-  - name: 恶习与美德 1
-    trigger: { type: ACTION_EVENT, status: START, action_id: 17637 }
-  - name: 伊甸核爆
-    trigger: { type: ACTION_EVENT, status: START, status_id: 15767 }
-  - name: 净土之光
-    trigger: { type: ACTION_EVENT, status: START, status_id: 15779 }
+    # --- Phase 1 Mechanics ---
+    -   name: 乐园之枪
+        trigger: { type: ACTION_EVENT, status: START, action_id: 15777 }
+    -   name: 伊甸重力
+        trigger: { type: ACTION_EVENT, status: START, action_id: 15764 }
+    -   name: 恶习与美德 1
+        trigger: { type: ACTION_EVENT, status: START, action_id: 17637 }
+    -   name: 伊甸核爆
+        trigger: { type: ACTION_EVENT, status: START, status_id: 15767 }
+    -   name: 净土之光
+        trigger: { type: ACTION_EVENT, status: START, status_id: 15779 }
 
-  - name: 空间转换 # P1 -> P2
-    trigger: { type: ACTION_EVENT, status: START, action_id: 15772 }
+    -   name: 空间转换 # P1 -> P2
+        trigger: { type: ACTION_EVENT, status: START, action_id: 15772 }
+    
+    # --- Phase 2 Mechanics ---
+    -   name: 极大爆炸
+        trigger: { type: ACTION_EVENT, status: START, action_id: 15780 }
+    -   name: 乐园冲
+        trigger: { type: ACTION_EVENT, status: START, action_id: 15785 }
+    -   name: 魔力爆发
+        trigger: { type: ACTION_EVENT, status: START, action_id: 15783 }
 
-  # --- Phase 2 Mechanics ---
-  - name: 极大爆炸
-    trigger: { type: ACTION_EVENT, status: START, action_id: 15780 }
-  - name: 乐园冲
-    trigger: { type: ACTION_EVENT, status: START, action_id: 15785 }
-  - name: 魔力爆发
-    trigger: { type: ACTION_EVENT, status: START, action_id: 15783 }
-
-  - name: 恶习与美德 2 # P2 -> P3
-    trigger: { type: ACTION_EVENT, status: START, action_id: 17636 }
+    -   name: 恶习与美德 2 # P2 -> P3
+        trigger: { type: ACTION_EVENT, status: START, action_id: 17636 }
 
 # --- Timeline ---
 timeline:
-  start_phase: P1
+    start_phase: P1
+    
+    phases:
+        -   name: P1
+            target_id: 9369
+            checkpoints:
+                - 伊甸重力
+                - 恶习与美德 1
+                - 伊甸核爆
+                - 乐园之枪
+                - 净土之光
+            transitions:
+                -   target_phase: P2
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 空间转换
 
-  phases:
-    - name: P1
-      target_id: 9369
-      checkpoints:
-        - 伊甸重力
-        - 恶习与美德 1
-        - 伊甸核爆
-        - 乐园之枪
-        - 净土之光
-      transitions:
-        - target_phase: P2
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 空间转换
+        -   name: P2
+            target_id: 9369
+            checkpoints:
+                - 极大爆炸
+                - 乐园冲
+                - 魔力爆发
+            transitions:
+                -   target_phase: P3
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 恶习与美德 2
 
-    - name: P2
-      target_id: 9369
-      checkpoints:
-        - 极大爆炸
-        - 乐园冲
-        - 魔力爆发
-      transitions:
-        - target_phase: P3
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 恶习与美德 2
-
-    - name: P3
-      target_id: 18361
-      checkpoints:
-        - 乐园之枪
-        - 净土之光
-        - 空间转换
-      transitions: [ ]
+        -   name: P3
+            target_id: 18361
+            checkpoints:
+                - 乐园之枪
+                - 净土之光
+                - 空间转换
+            transitions: [ ]

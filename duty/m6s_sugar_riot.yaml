@@ -13,161 +13,161 @@ code: M6s
 party_size: 8
 level: 100
 logs_encounter:
-  zone: 68
-  encounter: 98
-  difficulty: 101
+    zone: 68
+    encounter: 98
+    difficulty: 101
 
 # --- Variables ---
 variables:
-  - name: 色彩狂热次数
-    initial: 0
+    -   name: 色彩狂热次数
+        initial: 0
 
 # --- Mechanics ---
 mechanics:
-  # --- Phase 1 Mechanics ---
-  - name: 慕斯怪大雨
-    name_en: Mousse Mural
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42684 }
-  - name: 色彩狂热
-    name_en: Color Riot
-    trigger:
-      type: LOGICAL_OPERATOR
-      operator: OR
-      conditions:
-        - { type: ACTION_EVENT, status: START, action_id: 42641 }
-        - { type: ACTION_EVENT, status: START, action_id: 42642 }
-    actions:
-      - { type: INCREMENT_VARIABLE, name: 色彩狂热次数, value: 1 }
-  - name: 双手涂鸦 1
-    trigger: { type: STATUS_EVENT, status: REMOVED, status_id: 4450 }
-  - name: 黏黏慕斯怪
-    name_en: Sticky Mousse
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42645 }
+    # --- Phase 1 Mechanics ---
+    -   name: 慕斯怪大雨
+        name_en: Mousse Mural
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42684 }
+    -   name: 色彩狂热
+        name_en: Color Riot
+        trigger:
+            type: LOGICAL_OPERATOR
+            operator: OR
+            conditions:
+                - { type: ACTION_EVENT, status: START, action_id: 42641 }
+                - { type: ACTION_EVENT, status: START, action_id: 42642 }
+        actions:
+            - { type: INCREMENT_VARIABLE, name: 色彩狂热次数, value: 1 }
+    -   name: 双手涂鸦 1
+        trigger: { type: STATUS_EVENT, status: REMOVED, status_id: 4450 }
+    -   name: 黏黏慕斯怪
+        name_en: Sticky Mousse
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42645 }
 
-  # --- Phase 2 Mechanics ---
-  - name: 糖心绘景 1
-    name_en: Sugarscape
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42600 }
-  - name: 添笔 仙人掌
-    name_en: Layer
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42602 }
-  - name: 添笔 流沙
-    name_en: Layer
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42604 }
-  - name: 双手涂鸦 2
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42627 }
+    # --- Phase 2 Mechanics ---
+    -   name: 糖心绘景 1
+        name_en: Sugarscape
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42600 }
+    -   name: 添笔 仙人掌
+        name_en: Layer
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42602 }
+    -   name: 添笔 流沙
+        name_en: Layer
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42604 }
+    -   name: 双手涂鸦 2
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42627 }
 
-  - name: 中暑结束 # P2 -> P3
-    trigger: { type: STATUS_EVENT, status: REMOVED, status_id: 4449 }
+    -   name: 中暑结束 # P2 -> P3
+        trigger: { type: STATUS_EVENT, status: REMOVED, status_id: 4449 }
 
-  # --- Phase 3 Mechanics ---
-  - name: 即兴绘画 1
-    name_en: Live Painting
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42662 }
-  - name: 即兴绘画 2
-    name_en: Live Painting
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42663 }
-  - name: 即兴绘画 3
-    name_en: Live Painting
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42664 }
-  - name: 即兴绘画 4
-    name_en: Live Painting
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42665 }
-  - name: 单手涂鸦
-    trigger: { type: ACTION_EVENT, status: START, action_id: 39485 }
+    # --- Phase 3 Mechanics ---
+    -   name: 即兴绘画 1
+        name_en: Live Painting
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42662 }
+    -   name: 即兴绘画 2
+        name_en: Live Painting
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42663 }
+    -   name: 即兴绘画 3
+        name_en: Live Painting
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42664 }
+    -   name: 即兴绘画 4
+        name_en: Live Painting
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42665 }
+    -   name: 单手涂鸦
+        trigger: { type: ACTION_EVENT, status: START, action_id: 39485 }
 
-  # --- Phase 4 Mechanics ---
-  - name: 糖心绘景 2
-    name_en: Live Painting
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42595 }
-  - name: 双手涂鸦 3
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42631 }
-  - name: 添笔 雷雨
-    name_en: Layer
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42648 }
-  - name: 软糊怪派对 # 分摊
-    name_en: Pudding Party
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42605 }
-  - name: 添笔 火山
-    name_en: Layer
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42649 }
+    # --- Phase 4 Mechanics ---
+    -   name: 糖心绘景 2
+        name_en: Live Painting
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42595 }
+    -   name: 双手涂鸦 3
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42631 }
+    -   name: 添笔 雷雨
+        name_en: Layer
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42648 }
+    -   name: 软糊怪派对 # 分摊
+        name_en: Pudding Party
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42605 }
+    -   name: 添笔 火山
+        name_en: Layer
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42649 }
 
-  # --- Phase 5 Mechanics ---
-  - name: 艺术大乱斗 # 狂暴
-    name_en: Artistic Anarchy
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42685 }
+    # --- Phase 5 Mechanics ---
+    -   name: 艺术大乱斗 # 狂暴
+        name_en: Artistic Anarchy
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42685 }
 
 # --- Timeline ---
 timeline:
-  start_phase: P1
+    start_phase: P1
 
-  phases:
-    - name: P1
-      target_id: 18335
-      checkpoints:
-        - 慕斯怪大雨
-        - 色彩狂热
-        - 双手涂鸦 1
-        - 黏黏慕斯怪
-      transitions:
-        - target_phase: P2
-          conditions:
-            - type: EXPRESSION
-              expression: variables.色彩狂热次数 >= 2
+    phases:
+        -   name: P1
+            target_id: 18335
+            checkpoints:
+                - 慕斯怪大雨
+                - 色彩狂热
+                - 双手涂鸦 1
+                - 黏黏慕斯怪
+            transitions:
+                -   target_phase: P2
+                    conditions:
+                        -   type: EXPRESSION
+                            expression: variables.色彩狂热次数 >= 2
 
-    - name: P2
-      target_id: 18335
-      checkpoints:
-        - 糖心绘景 1
-        - 添笔 仙人掌
-        - 添笔 流沙
-        - 双手涂鸦 2
-      transitions:
-        - target_phase: P3
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 中暑结束
+        -   name: P2
+            target_id: 18335
+            checkpoints:
+                - 糖心绘景 1
+                - 添笔 仙人掌
+                - 添笔 流沙
+                - 双手涂鸦 2
+            transitions:
+                -   target_phase: P3
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 中暑结束
 
-    - name: P3
-      target_id: 18335
-      checkpoints:
-        - 即兴绘画 1
-        - 即兴绘画 2
-        - 即兴绘画 3
-        - 即兴绘画 4
-        - 单手涂鸦
-      transitions:
-        - target_phase: P4
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 慕斯怪大雨
+        -   name: P3
+            target_id: 18335
+            checkpoints:
+                - 即兴绘画 1
+                - 即兴绘画 2
+                - 即兴绘画 3
+                - 即兴绘画 4
+                - 单手涂鸦
+            transitions:
+                -   target_phase: P4
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 慕斯怪大雨
 
-    - name: P4
-      target_id: 18335
-      checkpoints:
-        - 糖心绘景 2
-        - 双手涂鸦 3
-        - 添笔 雷雨
-        - 软糊怪派对
-        - 添笔 火山
-        - 慕斯怪大雨
-      transitions:
-        - target_phase: P5
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 黏黏慕斯怪
+        -   name: P4
+            target_id: 18335
+            checkpoints:
+                - 糖心绘景 2
+                - 双手涂鸦 3
+                - 添笔 雷雨
+                - 软糊怪派对
+                - 添笔 火山
+                - 慕斯怪大雨
+            transitions:
+                -   target_phase: P5
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 黏黏慕斯怪
 
-    - name: P5
-      target_id: 18335
-      checkpoints:
-        - 色彩狂热
-      transitions:
-        - target_phase: 狂暴
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 艺术大乱斗
+        -   name: P5
+            target_id: 18335
+            checkpoints:
+                - 色彩狂热
+            transitions:
+                -   target_phase: 狂暴
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 艺术大乱斗
 
-    - name: 狂暴
-      target_id: 18335
-      checkpoints: [ ]
-      transitions: [ ]
+        -   name: 狂暴
+            target_id: 18335
+            checkpoints: [ ]
+            transitions: [ ]

@@ -14,7 +14,7 @@
 
 如 `治疗技能清单` `减伤相关清单` 等
 
-> 通过 `/{filename}` 访问 
+> 通过 `/{filename}` 访问
 
 > [示例: heal-action](https://assets.sumemo.dev/heal-action)
 

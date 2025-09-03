@@ -13,103 +13,103 @@ code: M7s
 party_size: 8
 level: 100
 logs_encounter:
-  zone: 68
-  encounter: 99
-  difficulty: 101
+    zone: 68
+    encounter: 99
+    difficulty: 101
 
 # --- Variables ---
 variables: [ ]
 
 # --- Mechanics ---
 mechanics:
-  # --- Phase 1 Mechanics ---
-  - name: 野蛮碎击
-    name_en: Brutal Impact
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42331 }
-  - name: 小怪阶段 1
-    name_en: Sinister Seeds
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42349 }
-  - name: 石化波动
-    name_en: Quarry Swamp
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42357 }
-  - name: 新式超豪华野蛮大乱击 # P1 -> P2
-    name_en: Neo Bombarian Special
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42364 }
+    # --- Phase 1 Mechanics ---
+    -   name: 野蛮碎击
+        name_en: Brutal Impact
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42331 }
+    -   name: 小怪阶段 1
+        name_en: Sinister Seeds
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42349 }
+    -   name: 石化波动
+        name_en: Quarry Swamp
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42357 }
+    -   name: 新式超豪华野蛮大乱击 # P1 -> P2
+        name_en: Neo Bombarian Special
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42364 }
 
-  # --- Phase 2 Mechanics ---
-  - name: 石制武器
-    name_en: Stoneringer
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42368 }
-  - name: 荆棘生死战
-    name_en: Thorny Deathmatch
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42376 }
-  - name: 荆棘生死战 楼体
-    name_en: Demolition Deathmatch
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42390 }
-  - name: 强震冲 # P2 -> P3
-    name_en: Powerslam
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42398 }
+    # --- Phase 2 Mechanics ---
+    -   name: 石制武器
+        name_en: Stoneringer
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42368 }
+    -   name: 荆棘生死战
+        name_en: Thorny Deathmatch
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42376 }
+    -   name: 荆棘生死战 楼体
+        name_en: Demolition Deathmatch
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42390 }
+    -   name: 强震冲 # P2 -> P3
+        name_en: Powerslam
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42398 }
 
-  # --- Phase 3 Mechanics ---
-  - name: 野蛮冲
-    name_en: Slaminator
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42413 }
-  - name: 荆棘生死战 墙面
-    name_en: Debris Deathmatch
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42416 }
-  - name: 小怪阶段 2
-    name_en: Spore Sac
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42346 }
-  - name: 究极超豪华野蛮大乱击 # 狂暴
-    name_en: Special Bombarian Special
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42417 }
+    # --- Phase 3 Mechanics ---
+    -   name: 野蛮冲
+        name_en: Slaminator
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42413 }
+    -   name: 荆棘生死战 墙面
+        name_en: Debris Deathmatch
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42416 }
+    -   name: 小怪阶段 2
+        name_en: Spore Sac
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42346 }
+    -   name: 究极超豪华野蛮大乱击 # 狂暴
+        name_en: Special Bombarian Special
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42417 }
 
 # --- Timeline ---
 timeline:
-  start_phase: P1
+    start_phase: P1
 
-  phases:
-    - name: P1
-      target_id: 0
-      checkpoints:
-        - 野蛮碎击
-        - 小怪阶段 1
-        - 石化波动
-        - 新式超豪华野蛮大乱击
-      transitions:
-        - target_phase: P2
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 新式超豪华野蛮大乱击
+    phases:
+        -   name: P1
+            target_id: 0
+            checkpoints:
+                - 野蛮碎击
+                - 小怪阶段 1
+                - 石化波动
+                - 新式超豪华野蛮大乱击
+            transitions:
+                -   target_phase: P2
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 新式超豪华野蛮大乱击
 
-    - name: P2
-      target_id: 0
-      checkpoints:
-        - 石制武器
-        - 荆棘生死战
-        - 荆棘生死战 楼体
-        - 强震冲
-      transitions:
-        - target_phase: P3
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 强震冲
+        -   name: P2
+            target_id: 0
+            checkpoints:
+                - 石制武器
+                - 荆棘生死战
+                - 荆棘生死战 楼体
+                - 强震冲
+            transitions:
+                -   target_phase: P3
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 强震冲
 
-    - name: P3
-      target_id: 0
-      checkpoints:
-        - 野蛮碎击
-        - 野蛮冲
-        - 荆棘生死战 墙面
-        - 小怪阶段 2
-        - 究极超豪华野蛮大乱击
-      transitions:
-        - target_phase: 狂暴
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 究极超豪华野蛮大乱击
+        -   name: P3
+            target_id: 0
+            checkpoints:
+                - 野蛮碎击
+                - 野蛮冲
+                - 荆棘生死战 墙面
+                - 小怪阶段 2
+                - 究极超豪华野蛮大乱击
+            transitions:
+                -   target_phase: 狂暴
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 究极超豪华野蛮大乱击
 
-    - name: 狂暴
-      target_id: 0
-      checkpoints: [ ]
-      transitions: [ ]
+        -   name: 狂暴
+            target_id: 0
+            checkpoints: [ ]
+            transitions: [ ]

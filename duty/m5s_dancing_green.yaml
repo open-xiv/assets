@@ -13,115 +13,115 @@ code: M5s
 party_size: 8
 level: 100
 logs_encounter:
-  zone: 68
-  encounter: 97
-  difficulty: 101
+    zone: 68
+    encounter: 97
+    difficulty: 101
 
 # --- Variables ---
 variables: [ ]
 
 # --- Mechanics ---
 mechanics:
-  # --- Phase 1 Mechanics ---
-  - name: 经典铭心
-    name_en: Deep Cut
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42785 }
-  - name: 激热跳舞街
-    name_en: Discro Infernal
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42838 }
-  - name: 登天夜狂热
-    name_en: Arcady Night Fever
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42848 }
-  - name: 音频炸弹
-    trigger: { type: STATUS_EVENT, status: APPLIED, status_id: 4462 }
+    # --- Phase 1 Mechanics ---
+    -   name: 经典铭心
+        name_en: Deep Cut
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42785 }
+    -   name: 激热跳舞街
+        name_en: Discro Infernal
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42838 }
+    -   name: 登天夜狂热
+        name_en: Arcady Night Fever
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42848 }
+    -   name: 音频炸弹
+        trigger: { type: STATUS_EVENT, status: APPLIED, status_id: 4462 }
 
-  - name: 在这停顿 1 # P1 -> P2
-    name_en: Let's Pose! (1)
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42863 }
+    -   name: 在这停顿 1 # P1 -> P2
+        name_en: Let's Pose! (1)
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42863 }
 
-  # --- Phase 2 Mechanics ---
-  - name: 舞浪全开
-    name_en: Ride the Waves
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42836 }
-  - name: 青蛙舞者
-    name_en: Frogtourage
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42847 }
-  - name: 返场夜狂热
-    name_en: _rsv_41840_-1_1_0_0_SE2DC5B04_EE2DC5B04
-    trigger: { type: ACTION_EVENT, status: START, action_id: 41840 }
-  - name: 彻夜狂欢
-    name_en: _rsv_41872_-1_1_0_0_SE2DC5B04_EE2DC5B04
-    trigger: { type: ACTION_EVENT, status: START, action_id: 41872 }
+    # --- Phase 2 Mechanics ---
+    -   name: 舞浪全开
+        name_en: Ride the Waves
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42836 }
+    -   name: 青蛙舞者
+        name_en: Frogtourage
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42847 }
+    -   name: 返场夜狂热
+        name_en: _rsv_41840_-1_1_0_0_SE2DC5B04_EE2DC5B04
+        trigger: { type: ACTION_EVENT, status: START, action_id: 41840 }
+    -   name: 彻夜狂欢
+        name_en: _rsv_41872_-1_1_0_0_SE2DC5B04_EE2DC5B04
+        trigger: { type: ACTION_EVENT, status: START, action_id: 41872 }
 
-  - name: 在这停顿 2 # P2 -> P3
-    name_en: Let's Pose! (2)
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42864 }
+    -   name: 在这停顿 2 # P2 -> P3
+        name_en: Let's Pose! (2)
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42864 }
 
-  # --- Phase 3 Mechanics ---
-  - name: 青蛙舞者 1 # 左右刀
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42870 }
-  - name: 青蛙舞者 2 # 近引导
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42871 }
-  - name: 青蛙舞者 3 # 左右刀
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42789 }
-  - name: 热舞场地
-    name_en: Funky Floor
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42834 }
-  - name: 舞团终演
-    name_en: _rsv_42209_-1_1_0_0_SE2DC5B04_EE2DC5B04
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42209 }
+    # --- Phase 3 Mechanics ---
+    -   name: 青蛙舞者 1 # 左右刀
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42870 }
+    -   name: 青蛙舞者 2 # 近引导
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42871 }
+    -   name: 青蛙舞者 3 # 左右刀
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42789 }
+    -   name: 热舞场地
+        name_en: Funky Floor
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42834 }
+    -   name: 舞团终演
+        name_en: _rsv_42209_-1_1_0_0_SE2DC5B04_EE2DC5B04
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42209 }
 
-  - name: 高能夜狂热 # 狂暴
-    name_en: _rsv_42873_-1_1_0_0_SE2DC5B04_EE2DC5B04
-    trigger: { type: ACTION_EVENT, status: START, action_id: 42873 }
+    -   name: 高能夜狂热 # 狂暴
+        name_en: _rsv_42873_-1_1_0_0_SE2DC5B04_EE2DC5B04
+        trigger: { type: ACTION_EVENT, status: START, action_id: 42873 }
 
 # --- Timeline ---
 timeline:
-  start_phase: P1
+    start_phase: P1
 
-  phases:
-    - name: P1
-      target_id: 18361
-      checkpoints:
-        - 经典铭心
-        - 激热跳舞街
-        - 登天夜狂热
-        - 音频炸弹
-      transitions:
-        - target_phase: P2
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 在这停顿 1
+    phases:
+        -   name: P1
+            target_id: 18361
+            checkpoints:
+                - 经典铭心
+                - 激热跳舞街
+                - 登天夜狂热
+                - 音频炸弹
+            transitions:
+                -   target_phase: P2
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 在这停顿 1
 
-    - name: P2
-      target_id: 18361
-      checkpoints:
-        - 舞浪全开
-        - 青蛙舞者
-        - 激热跳舞街
-        - 返场夜狂热
-        - 彻夜狂欢
-      transitions:
-        - target_phase: P3
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 在这停顿 2
+        -   name: P2
+            target_id: 18361
+            checkpoints:
+                - 舞浪全开
+                - 青蛙舞者
+                - 激热跳舞街
+                - 返场夜狂热
+                - 彻夜狂欢
+            transitions:
+                -   target_phase: P3
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 在这停顿 2
 
-    - name: P3
-      target_id: 18361
-      checkpoints:
-        - 青蛙舞者 1
-        - 青蛙舞者 2
-        - 青蛙舞者 3
-        - 热舞场地
-        - 舞团终演
-      transitions:
-        - target_phase: 狂暴
-          conditions:
-            - type: MECHANIC_TRIGGERED
-              mechanic_name: 高能夜狂热
+        -   name: P3
+            target_id: 18361
+            checkpoints:
+                - 青蛙舞者 1
+                - 青蛙舞者 2
+                - 青蛙舞者 3
+                - 热舞场地
+                - 舞团终演
+            transitions:
+                -   target_phase: 狂暴
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 高能夜狂热
 
-    - name: 狂暴
-      target_id: 0
-      checkpoints: [ ]
-      transitions: [ ]
+        -   name: 狂暴
+            target_id: 0
+            checkpoints: [ ]
+            transitions: [ ]
