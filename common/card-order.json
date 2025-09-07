@@ -1,0 +1,42 @@
+{
+    "melee": {
+        "opener": [
+            "Samurai",
+            "Ninja",
+            "Dragoon",
+            "Dark Knight",
+            "Monk",
+            "Reaper",
+            "Viper"
+        ],
+        "2m+": [
+            "Samurai",
+            "Ninja",
+            "Viper",
+            "Dragoon",
+            "Monk",
+            "Dark Knight",
+            "Reaper"
+        ]
+    },
+    "range": {
+        "opener": [
+            "Pictomancer",
+            "Summoner",
+            "Machinist",
+            "Dancer",
+            "Red Mage",
+            "Black Mage",
+            "Bard"
+        ],
+        "2m+": [
+            "Pictomancer",
+            "Summoner",
+            "Machinist",
+            "Bard",
+            "Red Mage",
+            "Dancer",
+            "Black Mage"
+        ]
+    }
+}
