@@ -5,50 +5,23 @@
 # -------------------
 
 zone_id: 1327
-name: 阿卡狄亚零式登天斗技场 重量级4
+name: 林德布鲁姆
 name_en: Lindwurm
 code: M12s
 
 # --- Meta ---
 party_size: 8
 level: 100
+logs_encounter:
+    zone: 73
+    encounter: 104
+    difficulty: 101
 
 # --- Variables ---
 variables: [ ]
 
 # --- Mechanics ---
 mechanics:
-    # --- Phase 1 Mechanics ---
-    -   name: 空间斩
-        name_en: Extraplanar Pursuit
-        trigger: { type: ACTION_EVENT, status: START, action_id: 42831 }
-    -   name: 千年风化
-        name_en: _rsv_41906_-1_1_0_0_SE2DC5B04_EE2DC5B04
-        trigger: { type: ACTION_EVENT, status: START, action_id: 41906 }
-    -   name: 大地的呼唤
-        trigger:
-            type: LOGICAL_OPERATOR
-            operator: OR
-            conditions:
-                - { type: ACTION_EVENT, status: START, action_id: 41924 }
-                - { type: ACTION_EVENT, status: START, action_id: 41925 }
-    -   name: 光狼召唤 # P1 -> P2
-        name_en: Tactical Pack
-        trigger: { type: ACTION_EVENT, status: START, action_id: 41928 }
-
-    # --- Phase 2 Mechanics ---
-    -   name: 爆震
-        name_en: Quake III
-        trigger: { type: ACTION_EVENT, status: START, action_id: 42074 }
-    -   name: 踩塔
-        name_en: _rsv_43050_-1_1_0_0_SE2DC5B04_EE2DC5B04
-        trigger: { type: ACTION_EVENT, status: START, action_id: 43050 }
-    -   name: 接线
-        name_en: _rsv_42097_-1_1_0_0_SE2DC5B04_EE2DC5B04
-        trigger: { type: ACTION_EVENT, status: START, action_id: 42097 }
-    -   name: 远近线
-        name_en: _rsv_42115_-1_1_0_0_SE2DC5B04_EE2DC5B04
-        trigger: { type: ACTION_EVENT, status: START, action_id: 42115 }
     -   name: 狂暴
         trigger:
             type: LOGICAL_OPERATOR
@@ -62,26 +35,9 @@ timeline:
     start_phase: P1
 
     phases:
-        -   name: P1
-            target_id: 0
+        -   name: N/A
+            target_id: 19195
             checkpoints:
-                - 空间斩
-                - 千年风化
-                - 大地的呼唤
-                - 光狼召唤
-            transitions:
-                -   target_phase: 后半
-                    conditions:
-                        -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 光狼召唤
-
-        -   name: 后半
-            target_id: 0
-            checkpoints:
-                - 爆震
-                - 踩塔
-                - 接线
-                - 远近线
                 - 狂暴
             transitions:
                 -   target_phase: 狂暴

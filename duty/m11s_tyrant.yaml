@@ -1,20 +1,20 @@
 # -------------------
-# M9S - Vamp Fatale
-# 阿卡狄亚零式登天斗技场 重量级 1
+# M11S - Tyrant
+# 阿卡狄亚零式登天斗技场 重量级 3
 # 阶段划分 x
 # -------------------
 
-zone_id: 1321
-name: 致命美人
-name_en: Vamp Fatale
-code: M9s
+zone_id: 1325
+name: 霸王
+name_en: Tyrant
+code: M11s
 
 # --- Meta ---
 party_size: 8
 level: 100
 logs_encounter:
     zone: 73
-    encounter: 101
+    encounter: 103
     difficulty: 101
 
 # --- Variables ---
@@ -36,7 +36,7 @@ timeline:
 
     phases:
         -   name: N/A
-            target_id: 19167
+            target_id: 19180
             checkpoints:
                 - 狂暴
             transitions:
