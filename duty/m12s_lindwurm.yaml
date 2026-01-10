@@ -22,6 +22,8 @@ variables: [ ]
 
 # --- Mechanics ---
 mechanics:
+    -   name: 转场
+        trigger: { type: ACTION_EVENT, status: START, action_id: 48028 }
     -   name: 狂暴
         trigger:
             type: LOGICAL_OPERATOR
@@ -32,11 +34,21 @@ mechanics:
 
 # --- Timeline ---
 timeline:
-    start_phase: N/A
+    start_phase: 门神
 
     phases:
-        -   name: N/A
+        -   name: 门神
             target_id: 19195
+            checkpoints:
+                - 转场
+            transitions:
+                -   target_phase: 转场
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 转场
+
+        -   name: 本体
+            target_id: 19202
             checkpoints:
                 - 狂暴
             transitions:
