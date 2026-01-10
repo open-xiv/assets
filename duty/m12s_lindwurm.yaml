@@ -42,7 +42,7 @@ timeline:
             checkpoints:
                 - 转场
             transitions:
-                -   target_phase: 转场
+                -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 转场
