@@ -21,5 +21,3 @@
 > 通过 `/duty/{zoneID}` 访问
 
 > [示例: m5s](https://assets.sumemo.dev/duty/1257)
-
----
