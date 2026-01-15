@@ -8,6 +8,9 @@ on:
 jobs:
     deploy:
         runs-on: ubuntu-latest
+        env:
+            DEPLOY_API_BASE: ${{ secrets.DEPLOY_API_BASE }}
+            DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
         steps:
             -   name: Checkout
