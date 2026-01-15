@@ -24,7 +24,7 @@ async function build() {
     } else {
         console.log(`directory ${commonDir} does not exist, skipping`);
     }
-    
+
     // duty yaml files
     // duty/<name>.yaml -> public/duty/<zoneID>.json
     const dutyDir = path.join(DATA_PATH, "duty");
