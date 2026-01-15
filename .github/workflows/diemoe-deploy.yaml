@@ -24,13 +24,13 @@ jobs:
             -   name: Install dependencies
                 run: npm ci
 
-            -   name: Build assets
+            -   name: Build Assets
                 run: npx tsx src/build.mts
 
             -   name: Pack Artifacts
                 run: |
                     cd public
-                    tar -czf ../dist.tar.gz .
+                    tar -cf ../dist.tar .
 
             -   name: Upload Assets
                 run: |
