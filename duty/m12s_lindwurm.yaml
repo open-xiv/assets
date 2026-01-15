@@ -18,7 +18,7 @@ logs_encounter:
     difficulty: 101
 
 # --- Variables ---
-variables: 
+variables:
     -   name: 门神八球次数
         initial: 0
     -   name: 本体运动会次数
@@ -45,7 +45,7 @@ mechanics:
         trigger: { type: ACTION_EVENT, status: START, action_id: 46265 }
     -   name: 细胞变异
         trigger: { type: ACTION_EVENT, status: START, action_id: 46259 }
-    
+
     # --- 门神三运 ---
     -   name: 细胞附身·晚期
         trigger: { type: ACTION_EVENT, status: START, action_id: 48831 }
@@ -63,7 +63,11 @@ mechanics:
         trigger: { type: ACTION_EVENT, status: START, action_id: 46275 }
     -   name: 过愈过伤(门神狂暴)
         trigger: { type: ACTION_EVENT, status: START, action_id: 46392 }
-    
+
+    # --- 本体可选中
+    -   name: 本体出现
+        trigger: { type: COMBATANT_EVENT,status:TARGETABLE, npc_id: 19202 }
+
     # --- 本体一运 ---
     -   name: 自我复制
         trigger: { type: ACTION_EVENT, status: START, action_id: 46296 }
@@ -95,7 +99,7 @@ mechanics:
             - { type: INCREMENT_VARIABLE, name: 本体运动会次数, value: 1 }
     -   name: 林德布鲁姆陨石
         trigger: { type: ACTION_EVENT, status: START, action_id: 46322 }
-    
+
     #--- 本体四运后 ---
     -   name: 境中奇狱
         trigger: { type: ACTION_EVENT, status: START, action_id: 46388 }
@@ -112,13 +116,17 @@ timeline:
     phases:
         -   name: 门神
             target_id: 19195
-            checkpoints: 
+            checkpoints:
                 - 致命灾变
             transitions:
                 -   target_phase: 门神一运
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 细胞附身·早期
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
 
         -   name: 门神一运
             target_id: 19195
@@ -129,7 +137,11 @@ timeline:
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 细胞附身·中期
-            
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
+
         -   name: 门神二运
             target_id: 19195
             checkpoints:
@@ -140,7 +152,11 @@ timeline:
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 细胞附身·晚期
-            
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
+
         -   name: 门神三运
             target_id: 19195
             checkpoints:
@@ -150,7 +166,11 @@ timeline:
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 细胞附身·末期
-            
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
+
         -   name: 门神四运
             target_id: 19195
             checkpoints:
@@ -160,7 +180,11 @@ timeline:
                     conditions:
                         -   type: EXPRESSION
                             expression: variables.门神八球次数 == 2
-            
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
+
         -   name: 门神四运后
             target_id: 19195
             checkpoints:
@@ -170,7 +194,11 @@ timeline:
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 过愈过伤(门神狂暴)
-        
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
+
         -   name: 门神狂暴
             target_id: 19195
             checkpoints: [ ]
@@ -179,6 +207,10 @@ timeline:
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 转场
+                -   target_phase: 本体
+                    conditions:
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 本体出现
 
         -   name: 本体
             target_id: 19202
@@ -198,7 +230,7 @@ timeline:
                     conditions:
                         -   type: EXPRESSION
                             expression: variables.本体运动会次数 == 2
-        
+
         -   name: 本体二运
             target_id: 19202
             checkpoints:
@@ -208,7 +240,7 @@ timeline:
                     conditions:
                         -   type: EXPRESSION
                             expression: variables.本体运动会次数 == 3
-        
+
         -   name: 本体三运
             target_id: 19202
             checkpoints:
@@ -218,7 +250,7 @@ timeline:
                     conditions:
                         -   type: EXPRESSION
                             expression: variables.本体运动会次数 == 4
-        
+
         -   name: 本体四运
             target_id: 19202
             checkpoints:
@@ -228,7 +260,7 @@ timeline:
                     conditions:
                         -   type: MECHANIC_TRIGGERED
                             mechanic_name: 境中奇狱
-            
+
         -   name: 本体四运后
             target_id: 19202
             checkpoints:
@@ -240,5 +272,5 @@ timeline:
 
         -   name: 本体狂暴
             target_id: 19202
-            checkpoints: [ ] 
+            checkpoints: [ ]
             transitions: [ ]
