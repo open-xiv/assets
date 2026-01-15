@@ -29,7 +29,8 @@ jobs:
 
             -   name: Pack Artifacts
                 run: |
-                    tar -czf dist.tar.gz public/
+                    cd public
+                    tar -czf ../dist.tar.gz .
 
             -   name: Upload Assets
                 run: |
