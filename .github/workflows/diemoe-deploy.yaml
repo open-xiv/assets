@@ -43,7 +43,7 @@ jobs:
                       -X POST "${DEPLOY_API_BASE}/upload" \
                       -H "Authorization: Bearer ${DEPLOY_TOKEN}" \
                       -F "version=${GITHUB_SHA}" \
-                      -F "artifact=@dist.tar.gz"
+                      -F "artifact=@dist.tar"
 
             -   name: Deploy Assets
                 run: |
