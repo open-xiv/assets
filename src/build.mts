@@ -39,7 +39,7 @@ async function build() {
 
                 if (parsed && parsed.zone_id) {
                     const mapping = JSON.stringify(parsed, null, 4);
-                    const dst = path.join("public", "duty", `${parsed.zone_id}.json`);
+                    const dst = path.join(DIST_PATH, "duty", `${parsed.zone_id}.json`);
                     fs.writeFileSync(dst, mapping, "utf-8");
                     console.log(`${f} copied to ${dst}`);
                 } else {

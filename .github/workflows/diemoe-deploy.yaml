@@ -1,0 +1,71 @@
+name: Build & Deploy Assets
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: Install Dependencies
+              run: |
+                  if [ -f package.json ]; then
+                    npm ci
+                  fi
+
+            - name: Build Assets
+              run: |
+                  node build.mts
+                  test -d public
+
+            - name: Pack Artifacts
+              run: |
+                  tar -czf dist.tar.gz public/
+
+            -   name: Upload Assets
+                run: |
+                    curl -f \
+                      --connect-timeout 10 \
+                      --max-time 300 \
+                      --retry 3 \
+                      --retry-delay 5 \
+                      --retry-connrefused \
+                      -X POST "${DEPLOY_API_BASE}/upload" \
+                      -H "Authorization: Bearer ${DEPLOY_TOKEN}" \
+                      -F "version=${GITHUB_SHA}" \
+                      -F "artifact=@dist.tar.gz"
+
+            -   name: Deploy Assets
+                run: |
+                    resp=$(curl -f -s \
+                      --connect-timeout 5 \
+                      --max-time 30 \
+                      --retry 3 \
+                      --retry-delay 3 \
+                      --retry-connrefused \
+                      -X POST "${DEPLOY_API_BASE}/deploy" \
+                      -H "Authorization: Bearer ${DEPLOY_TOKEN}" \
+                      -H "Content-Type: application/json" \
+                      -d '{"version":"'"${GITHUB_SHA}"'"}')
+                    
+                    echo "$resp"
+                    echo "$resp" | jq -e '.status == "ok"'
+
+            -   name: Verify Active Version
+                run: |
+                    curl -s \
+                      --connect-timeout 5 \
+                      --max-time 10 \
+                      "${DEPLOY_API_BASE}/status" \
+                      -H "Authorization: Bearer ${DEPLOY_TOKEN}" | jq
