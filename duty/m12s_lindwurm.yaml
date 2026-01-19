@@ -1,7 +1,7 @@
 # -------------------
 # M12S - Lindwurm
 # 阿卡狄亚零式登天斗技场 重量级 4
-# 阶段划分 x
+# 阶段划分 JXX
 # -------------------
 
 zone_id: 1327
@@ -64,14 +64,9 @@ mechanics:
     -   name: 过愈过伤(门神狂暴)
         trigger: { type: ACTION_EVENT, status: START, action_id: 46392 }
 
-    # --- 本体可选中
-    -   name: 本体出现
-        trigger:
-            type: LOGICAL_OPERATOR
-            operator: OR
-            conditions:
-                - { type: COMBATANT_EVENT, status: TARGETABLE, npc_id: 19202 }
-                - { type: ACTION_EVENT, status: START, action_id: 46296 }
+    # --- 本体
+    -   name: 镜中奇焰
+        trigger: { type: ACTION_EVENT, status: START, action_id: 46376 }
 
     # --- 本体一运 ---
     -   name: 自我复制
@@ -111,9 +106,6 @@ mechanics:
     -   name: 境中奇狱(本体狂暴)
         trigger: { type: ACTION_EVENT, status: START, action_id: 46389 }
 
-    -   name: 转场
-        trigger: { type: STATUS_EVENT, status: APPLIED, action_id: 2408 }
-
 # --- Timeline ---
 timeline:
     start_phase: 门神
@@ -121,8 +113,7 @@ timeline:
     phases:
         -   name: 门神
             target_id: 19195
-            checkpoints:
-                - 致命灾变
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 门神一运
                     conditions:
@@ -131,12 +122,11 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 门神一运
             target_id: 19195
-            checkpoints:
-                - 大爆炸
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 门神二运
                     conditions:
@@ -145,13 +135,11 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 门神二运
             target_id: 19195
-            checkpoints:
-                - 残暴拘束
-                - 细胞变异
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 门神三运
                     conditions:
@@ -160,12 +148,11 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 门神三运
             target_id: 19195
-            checkpoints:
-                - 细胞飞散
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 门神四运
                     conditions:
@@ -174,12 +161,11 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 门神四运
             target_id: 19195
-            checkpoints:
-                - 盛大登场
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 门神四运后
                     conditions:
@@ -188,12 +174,11 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 门神四运后
             target_id: 19195
-            checkpoints:
-                - 喋血
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 门神狂暴
                     conditions:
@@ -202,7 +187,7 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 门神狂暴
             target_id: 19195
@@ -211,59 +196,47 @@ timeline:
                 -   target_phase: 本体
                     conditions:
                         -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 转场
-                -   target_phase: 本体
-                    conditions:
-                        -   type: MECHANIC_TRIGGERED
-                            mechanic_name: 本体出现
+                            mechanic_name: 镜中奇焰
 
         -   name: 本体
             target_id: 19202
-            checkpoints:
-                - 自我复制
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 本体一运
                     conditions:
-                        -   type: EXPRESSION
-                            expression: variables.本体运动会次数 == 1
+                        -   type: MECHANIC_TRIGGERED
+                        -   mechanic_name: 自我复制
 
         -   name: 本体一运
             target_id: 19202
-            checkpoints:
-                - 天顶猛击
-                - 模仿细胞
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 本体二运
                     conditions:
-                        -   type: EXPRESSION
-                            expression: variables.本体运动会次数 == 2
+                        -   type: MECHANIC_TRIGGERED
+                        -   mechanic_name: 模仿细胞
 
         -   name: 本体二运
             target_id: 19202
-            checkpoints:
-                - 时空重现
-                - 变异细胞
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 本体三运
                     conditions:
-                        -   type: EXPRESSION
-                            expression: variables.本体运动会次数 == 3
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 变异细胞
 
         -   name: 本体三运
             target_id: 19202
-            checkpoints:
-                - 双重飞踢
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 本体四运
                     conditions:
-                        -   type: EXPRESSION
-                            expression: variables.本体运动会次数 == 4
+                        -   type: MECHANIC_TRIGGERED
+                            mechanic_name: 境中奇梦
 
         -   name: 本体四运
             target_id: 19202
-            checkpoints:
-                - 境中奇梦
-                - 林德布鲁姆陨石
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 本体四运后
                     conditions:
@@ -272,7 +245,7 @@ timeline:
 
         -   name: 本体四运后
             target_id: 19202
-            checkpoints:
+            checkpoints: [ ]
             transitions:
                 -   target_phase: 本体狂暴
                     conditions:
